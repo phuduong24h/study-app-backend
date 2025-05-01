@@ -1,0 +1,476 @@
+{
+  "id": "ae7d18f4-40c9-4480-913b-7ab3ea9eb613",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.Answers": {
+      "name": "Answers",
+      "schema": "",
+      "columns": {
+        "MaCTL": {
+          "name": "MaCTL",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "MaHS": {
+          "name": "MaHS",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MaDT": {
+          "name": "MaDT",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MaCH": {
+          "name": "MaCH",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MaLC": {
+          "name": "MaLC",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ThoiGianNop": {
+          "name": "ThoiGianNop",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Answers_MaHS_Users_MaND_fk": {
+          "name": "Answers_MaHS_Users_MaND_fk",
+          "tableFrom": "Answers",
+          "tableTo": "Users",
+          "columnsFrom": [
+            "MaHS"
+          ],
+          "columnsTo": [
+            "MaND"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Answers_MaDT_Exams_MaDT_fk": {
+          "name": "Answers_MaDT_Exams_MaDT_fk",
+          "tableFrom": "Answers",
+          "tableTo": "Exams",
+          "columnsFrom": [
+            "MaDT"
+          ],
+          "columnsTo": [
+            "MaDT"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Answers_MaCH_Questions_MaCH_fk": {
+          "name": "Answers_MaCH_Questions_MaCH_fk",
+          "tableFrom": "Answers",
+          "tableTo": "Questions",
+          "columnsFrom": [
+            "MaCH"
+          ],
+          "columnsTo": [
+            "MaCH"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Answers_MaLC_Choices_MaLC_fk": {
+          "name": "Answers_MaLC_Choices_MaLC_fk",
+          "tableFrom": "Answers",
+          "tableTo": "Choices",
+          "columnsFrom": [
+            "MaLC"
+          ],
+          "columnsTo": [
+            "MaLC"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Choices": {
+      "name": "Choices",
+      "schema": "",
+      "columns": {
+        "MaLC": {
+          "name": "MaLC",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "MaCH": {
+          "name": "MaCH",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoiDungLC": {
+          "name": "NoiDungLC",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LaDAD": {
+          "name": "LaDAD",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Choices_MaCH_Questions_MaCH_fk": {
+          "name": "Choices_MaCH_Questions_MaCH_fk",
+          "tableFrom": "Choices",
+          "tableTo": "Questions",
+          "columnsFrom": [
+            "MaCH"
+          ],
+          "columnsTo": [
+            "MaCH"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ExamQuestions": {
+      "name": "ExamQuestions",
+      "schema": "",
+      "columns": {
+        "MaCHDT": {
+          "name": "MaCHDT",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "MaDT": {
+          "name": "MaDT",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MaCH": {
+          "name": "MaCH",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ExamQuestions_MaDT_Exams_MaDT_fk": {
+          "name": "ExamQuestions_MaDT_Exams_MaDT_fk",
+          "tableFrom": "ExamQuestions",
+          "tableTo": "Exams",
+          "columnsFrom": [
+            "MaDT"
+          ],
+          "columnsTo": [
+            "MaDT"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ExamQuestions_MaCH_Questions_MaCH_fk": {
+          "name": "ExamQuestions_MaCH_Questions_MaCH_fk",
+          "tableFrom": "ExamQuestions",
+          "tableTo": "Questions",
+          "columnsFrom": [
+            "MaCH"
+          ],
+          "columnsTo": [
+            "MaCH"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ExamResults": {
+      "name": "ExamResults",
+      "schema": "",
+      "columns": {
+        "MaKQ": {
+          "name": "MaKQ",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "MaDT": {
+          "name": "MaDT",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MaHS": {
+          "name": "MaHS",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Diem": {
+          "name": "Diem",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ThoiGianNop": {
+          "name": "ThoiGianNop",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ExamResults_MaDT_Exams_MaDT_fk": {
+          "name": "ExamResults_MaDT_Exams_MaDT_fk",
+          "tableFrom": "ExamResults",
+          "tableTo": "Exams",
+          "columnsFrom": [
+            "MaDT"
+          ],
+          "columnsTo": [
+            "MaDT"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ExamResults_MaHS_Users_MaND_fk": {
+          "name": "ExamResults_MaHS_Users_MaND_fk",
+          "tableFrom": "ExamResults",
+          "tableTo": "Users",
+          "columnsFrom": [
+            "MaHS"
+          ],
+          "columnsTo": [
+            "MaND"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Exams": {
+      "name": "Exams",
+      "schema": "",
+      "columns": {
+        "MaDT": {
+          "name": "MaDT",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "TieuDe": {
+          "name": "TieuDe",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MatKhau": {
+          "name": "MatKhau",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MaND": {
+          "name": "MaND",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NgayTao": {
+          "name": "NgayTao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Exams_MaND_Users_MaND_fk": {
+          "name": "Exams_MaND_Users_MaND_fk",
+          "tableFrom": "Exams",
+          "tableTo": "Users",
+          "columnsFrom": [
+            "MaND"
+          ],
+          "columnsTo": [
+            "MaND"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Questions": {
+      "name": "Questions",
+      "schema": "",
+      "columns": {
+        "MaCH": {
+          "name": "MaCH",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "NoiDungCH": {
+          "name": "NoiDungCH",
+          "type": "varchar(5000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MaND": {
+          "name": "MaND",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NgayTao": {
+          "name": "NgayTao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Questions_MaND_Users_MaND_fk": {
+          "name": "Questions_MaND_Users_MaND_fk",
+          "tableFrom": "Questions",
+          "tableTo": "Users",
+          "columnsFrom": [
+            "MaND"
+          ],
+          "columnsTo": [
+            "MaND"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.Users": {
+      "name": "Users",
+      "schema": "",
+      "columns": {
+        "MaND": {
+          "name": "MaND",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "MaHS": {
+          "name": "MaHS",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Ten": {
+          "name": "Ten",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Email": {
+          "name": "Email",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "MatKhau": {
+          "name": "MatKhau",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "VaiTro": {
+          "name": "VaiTro",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NgayTao": {
+          "name": "NgayTao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "NgayCapNhat": {
+          "name": "NgayCapNhat",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
